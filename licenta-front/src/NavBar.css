@@ -1,0 +1,21 @@
+.navbar {
+    background-color: rgba(41, 79, 120, 0.846);
+    overflow: hidden;
+  
+
+    
+  }
+  
+  .navbar a {
+    color: #d3c5ff9c;
+    text-align: center;
+    padding-Right: 14px;
+    padding-Left:14px;
+    text-decoration: none;
+    display: inline-block; /* Ensure items are displayed inline */
+  }
+  
+  .navbar a:hover {
+    background-color: rgba(104, 151, 204, 0.846);;
+    color: black;
+  }

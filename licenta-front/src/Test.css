@@ -1,0 +1,78 @@
+/* Test.css */
+
+
+
+.cute-container {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto; /* Permită scroll în această zonă */
+  
+}
+
+
+.cute-center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.cute-question {
+  width: 100%;
+  background-color: #4875a6bd;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px; /* Adjust this value to add space between questions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  box-sizing: border-box;
+  color:white
+}
+
+.cute-question-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.cute-answer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cute-answer {
+  background-color: #4875a6b8;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.cute-answer:before {
+  content: ''; /* Empty content */
+  position: absolute; /* Position the bullet point */
+  left: -1em; /* Adjust the position of the bullet point */
+  top: 50%; /* Align vertically */
+  transform: translateY(-50%); /* Center vertically */
+  width: 10px; /* Adjust width of bullet point as needed */
+  height: 10px; /* Adjust height of bullet point as needed */
+  background-color: transparent; /* Make the bullet point transparent */
+  border-radius: 50%; /* Make the bullet point round */
+}
+.cute-answer.selected-answer {
+  background-color: #d3c5ff9c;
+}
+
+.cute-answer:hover {
+  background-color: #d3c5ff9c;
+}
+
+
+h2 {
+  font-size: 32px; /* Ajustează dimensiunea fontului aici la dimensiunea dorită */
+}

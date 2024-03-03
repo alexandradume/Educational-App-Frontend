@@ -1,0 +1,45 @@
+/* Lectie.css */
+
+.lectie-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  main {
+    margin-bottom: 40px;
+  }
+  
+  section {
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color:#4875a6b8;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #d3c5ffd2
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  

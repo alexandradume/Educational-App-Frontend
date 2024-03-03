@@ -1,0 +1,55 @@
+
+    body {
+       
+        height: 100vh; /* Ensure the body takes the full height of the viewport */
+        margin: 0; /* Remove default margin */
+      }
+   
+      /* Profile.css */
+
+.profile-container {
+  display: flex;
+}
+
+.profile-content {
+  flex: 1;
+  padding: 50px;
+}
+
+.chat-container {
+  width: 400px;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.chat-messages {
+  height: 200px; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+.textStyle{
+  size:30px;
+  margin-top: 20px;
+  margin-left: 0px;
+ 
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  margin-bottom: 0p;
+  flex: 1;
+  margin-right:10px;
+}
+
+.chat-input button {
+  width: 80px;
+}
+
+body {
+  margin: 0; /* Remove default margin */
+}
+
+

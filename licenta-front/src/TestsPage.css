@@ -1,0 +1,84 @@
+/* TestsPage.css */
+.cute-container {
+  padding-top:70px;
+  padding-left:170px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.column {
+  flex-basis: 48%; /* Adjust the width of each column */
+}
+
+.heading{
+  padding-left:170px;
+}
+.cute-heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8ea4bed0;
+  margin-bottom: 10px;
+}
+
+/* TestsPage.css */
+
+/* Container for positioning images in corners */
+.image-container {
+  position: relative;
+}
+
+/* Style for images */
+.img-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.img-top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin:20px;
+}
+
+
+.img-top-rightt {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  margin:20px;
+}
+
+
+
+.img-top-right-right {
+  position: absolute;
+  top: 40px;
+  right: 85px;
+  margin:20px;
+}
+
+.img-bottom-right {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  margin:20px;
+}
+
+
+
+.img-bottom-left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  margin:20px;
+}
+
+.img-bottom-left-left {
+  position: absolute;
+  bottom: 30px;
+  left: 100px;
+  margin:20px;
+}
+

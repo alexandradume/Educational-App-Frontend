@@ -1,0 +1,20 @@
+.divForSubmit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Display children in a column */
+    align-items: center;
+    justify-content: center;
+    background-image:
+    linear-gradient(to right, #4875a6b2, #d3c5ff9c),
+}
+
+.img-top-good-right{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    margin:20px;
+}

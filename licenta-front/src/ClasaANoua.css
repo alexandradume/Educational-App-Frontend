@@ -1,0 +1,10 @@
+li {
+    list-style:disc; /* You can also use 'circle' or 'square' */
+  }
+
+  li::marker {
+    color: #4875a6b8; /* Color of the bullet */
+    font-size: 20px; /* Size of the bullet */
+  }
+  
+  

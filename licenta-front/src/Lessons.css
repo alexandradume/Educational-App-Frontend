@@ -1,0 +1,72 @@
+.lessons-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lesson-group {
+  flex: 1;
+  margin: 10px; /* spațiu între grupuri */
+}
+
+
+.img-top-left {
+  position: absolute;
+  top: 60px;
+  left: 25px;
+}
+
+.img-top-right {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  margin:20px;
+}
+
+
+.img-top-rightt {
+  position: absolute;
+  top: 50px;
+  right: 90px;
+  margin:20px;
+}
+
+
+
+.img-top-right-right {
+  position: absolute;
+  top: 40px;
+  right: 85px;
+  margin:20px;
+}
+
+.img-bottom-right {
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  margin:20px;
+}
+
+
+
+.img-bottom-left {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  margin:20px;
+}
+
+.img-bottom-left-left {
+  position: absolute;
+  bottom: -30px;
+  left: 100px;
+  margin:20px;
+}
+
+span{
+  color:#d3c5ff9c;
+}
+
+.shadow{
+  box-Shadow: '2px 2px 4px rgba(0, 0, 0, 0.2)';
+  padding: '10px';
+}

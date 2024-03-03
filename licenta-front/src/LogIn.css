@@ -1,0 +1,15 @@
+/* styles.css */
+
+
+.myFormContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150vh;
+    margin: 0;
+    padding: 50px;
+    background-color: #4875a6bd;
+    width: 300px;
+    height: 190px;
+    text-align: center;
+}
