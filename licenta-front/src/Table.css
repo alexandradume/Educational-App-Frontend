@@ -1,3 +1,17 @@
+/* Table.css */
+
 .custom-table {
-    width: 300px;
-  }
+  width: 100%; /* Lățimea tabelului să se extindă pe întreaga lățime a containerului */
+  font-size: 16px; /* Mărimea fontului */
+}
+
+.custom-table tr:hover {
+  background-color: #d3c5ff7a; /* Culoarea de fundal atunci când un rând este hover */
+}
+
+.table-container {
+  max-height: 100px; /* Înălțime maximă pentru tabel */
+  overflow-y: auto; /* Afișează bara de derulare verticală atunci când este necesar */
+  margin-top: -10px; /* Spațierea superioară negativă pentru a compensa marginea de sus a tabelului */
+}
+

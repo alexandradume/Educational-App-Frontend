@@ -12,31 +12,38 @@ interface Table {
 }
 
 const Table: React.FC<Table> = ({ data }) => {
+  const chunkedData = [];
+  for (let i = 0; i < data.length; i += 3) {
+    chunkedData.push(data.slice(i, i + 3));
+  }
+
   return (
     <div>
-      <h3>Your recent tests</h3>
-      <table className="custom-table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col" className="ps-4 pe-4">
-              Category
-            </th>
-            <th scope="col" className="ps-4 pe-4">
-              Score
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{item.category}</td>
-              <td>{item.score}</td>
+      <h3>Testele tale recente</h3>
+      <div className="table-container">
+        <table className="custom-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" className="ps-4 pe-4">
+                Categorie
+              </th>
+              <th scope="col" className="ps-4 pe-4">
+                Scor
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{item.category}</td>
+                <td>{item.score}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

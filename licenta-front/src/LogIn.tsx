@@ -7,6 +7,7 @@ function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [redirect1, setRedirect1] = useState(false);
   const history = useHistory();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +44,15 @@ function LogIn() {
     );
   }
 
+  const handleSingIn = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    setRedirect(true);
+    history.push("/signin");
+  };
+
+  if (redirect1) {
+    return <Redirect to={{ pathname: `/signin` }} />;
+  }
+
   return (
     <div
       style={{
@@ -63,7 +73,6 @@ function LogIn() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-
         <Form.Group controlId="formBasicPassword" style={{ marginTop: "20px" }}>
           <FormControl
             type="password"
@@ -73,11 +82,16 @@ function LogIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <br></br>
+        <br />
         <Button variant="primary" type="submit">
           Log In
         </Button>
       </Form>
+      <h4 style={{ marginTop: "20px" }}>Nu ai cont?</h4>{" "}
+      {/* Moved outside the form */}
+      <Button variant="primary" onClick={handleSingIn}>
+        Sign In
+      </Button>
     </div>
   );
 }

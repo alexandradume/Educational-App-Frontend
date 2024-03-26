@@ -122,8 +122,8 @@ function TestsPage() {
                 Divide Et Impera
               </span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>
-                Siruri de caractere
+              <span onClick={() => handleClick("Șiruri de caractere")}>
+                Șiruri de caractere
               </span>
               <br />
               <span onClick={() => handleClick("Elemente de baza")}>Stiva</span>
@@ -148,7 +148,7 @@ function TestsPage() {
           <h2>Clasa a XI-a</h2>
           <span>
             <b>
-              <span onClick={() => handleClick("Elemente de baza")}>
+              <span onClick={() => handleClick("Backtracking")}>
                 {" "}
                 Backtracking
               </span>

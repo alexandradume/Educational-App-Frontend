@@ -94,7 +94,7 @@ function Lessons() {
           marginBottom: "70px",
         }}
       >
-        Lectii
+        LECȚII
       </h1>
       <div
         style={{

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import NavBar from "./NavBar";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 interface LocationState {
   username: string;
 }
@@ -439,6 +440,7 @@ function ClasaANoua() {
               </div>
             </ul>
           </section>
+          <Carusel category="Elemente de bază" username={username}></Carusel>
           <img
             className="img-top-right"
             style={{ height: "70px" }}

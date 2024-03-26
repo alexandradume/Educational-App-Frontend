@@ -1,0 +1,13 @@
+.divAnswer{
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px; /* Adjust this value to add space between questions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

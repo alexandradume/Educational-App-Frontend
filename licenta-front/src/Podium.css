@@ -1,0 +1,26 @@
+.custom-tablee {
+    margin-Left:3%;
+    width: 94%;
+    border-collapse: collapse;
+
+  }
+  
+  .custom-tablee th,
+  .custom-tablee td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .custom-tablee th {
+    background-color: transparent;
+  }
+  
+  .custom-tablee tr:nth-child(even) {
+    background-color: transparent;
+  }
+  
+  .custom-tablee tr:hover {
+    background-color: #d3c5ff7a;
+  }
+  

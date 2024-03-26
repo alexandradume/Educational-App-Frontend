@@ -1,7 +1,7 @@
 /* ProfilePicture.css */
 .profile-picture-container {
  
-  top: 40;
+  margin-Top: -30px;
   left: 0;
   
   flex-direction: column;
@@ -9,11 +9,11 @@
 }
 
 .profile-picture {
-  width: 150px; /* Adjust the width as needed */
-  height: 150px; /* Adjust the height as needed */
+  width: 180px; /* Adjust the width as needed */
+  height: 180px; /* Adjust the height as needed */
   border-radius: 50%;
-  margin-bottom: 5px; /* Adjust the margin as needed */
-
+  margin-bottom: -25px; /* Adjust the margin as needed */
+  box-shadow: 5px 5px 5px rgba(7, 6, 6, 0.5);
  
 }
 .name {

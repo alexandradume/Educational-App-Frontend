@@ -1,0 +1,68 @@
+.carousel-container {
+    position: relative;
+    width: 123%;
+    height: 200px; /* Schimbați înălțimea după necesități */
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .image-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(253, 253, 253); /* Stilizați după nevoile dvs. */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  
+  .arrow.left {
+    width: 30px;
+    height: 30px;
+    /* Culoarea de fundal pentru săgeți */
+    cursor: pointer;
+    background-image: url('./src/assets/left.png'); /* Înlocuiți 'path_to_your_arrow_image.png' cu calea către imaginea săgeții */
+    background-size: cover; /* Asigură că imaginea acoperă întregul spațiu al săgeții */
+  }
+  
+  
+  
+  .arrow.right {
+    width: 30px;
+    height: 30px;
+    /* Culoarea de fundal pentru săgeți */
+    margin-right:15px;
+    cursor: pointer;
+    background-image: url('./src/assets/right.png'); /* Înlocuiți 'path_to_your_arrow_image.png' cu calea către imaginea săgeții */
+    background-size: cover; /* Asigură că imaginea acoperă întregul spațiu al săgeții */
+  }
+  .recap-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 200px; /* Set the height */
+  }
+  
+  .recap-text {
+    color: black;
+    font-size: 20px;
+    margin: 20px 20px; /* Add margin to the spans */
+    padding-Left:24px;
+  }
+
+  .inputt{
+    background-color: rgba(255, 255, 255, 0.758);
+    color:black;
+    font-size: 20px;
+  }
+  

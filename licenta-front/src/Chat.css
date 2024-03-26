@@ -1,0 +1,37 @@
+.chat-container {
+    display: flex;
+    flex-direction: column; /* Afișează elementele într-o coloană */
+    justify-content: space-between; /* Aliniază elementele pe toată înălțimea containerului */
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 70vh;
+    margin: 20px;
+    width: 350px;
+  }
+  
+  
+  .chat-messages {
+    height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+  }
+  
+  .textStyle{
+    size:30px;
+    margin-top: 20px;
+    margin-left: 0px;
+   
+  }
+  
+  .chat-input {
+    display: flex;
+  }
+  
+  .chat-input input {
+    margin-bottom: 0px;
+    flex: 1;
+    margin-right:10px;
+  }
+  
+  .chat-input button {
+    width: 80px;
+  }

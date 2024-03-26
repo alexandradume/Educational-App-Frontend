@@ -9,6 +9,8 @@ import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import Badge from "./Badge";
+import Chat from "./Chat";
 interface LocationState {
   username: string;
 }
@@ -24,6 +26,10 @@ interface UserData {
   birthdate: string;
   tests: string[];
   score: number;
+  money: number;
+  scores: {
+    [date: string]: number; // Cheia este data, iar valoarea este scorul asociat cu acea dată
+  };
 }
 
 const Profile: React.FC = () => {
@@ -33,7 +39,11 @@ const Profile: React.FC = () => {
   const [testData, setTestData] = useState<
     { category: string; score: number }[]
   >([]);
+  const [descr, setDescr] = useState("");
 
+  const [level, setLevel] = useState("");
+  const [score, setScore] = useState(0);
+  const [money, setMoney] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,6 +54,7 @@ const Profile: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data);
         setUserData(data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -54,7 +65,13 @@ const Profile: React.FC = () => {
   }, [username]);
 
   useEffect(() => {
+    if (userData) {
+      setDescr(userData.description);
+      setMoney(userData.money);
+     
+    }
     if (userData && userData.tests) {
+      setScore(userData.score);
       const testData = userData.tests.map((testName, index) => {
         const [category, scoreStr] = testName
           .split(",")
@@ -65,6 +82,38 @@ const Profile: React.FC = () => {
       setTestData(testData);
     }
   }, [userData]);
+
+  useEffect(() => {
+    switch (true) {
+      case score < 20:
+        setLevel("White");
+        break;
+      case score < 60:
+        setLevel("Yellow");
+        break;
+      case score < 100:
+        setLevel("Orange");
+        break;
+      case score < 140:
+        setLevel("Green");
+        break;
+      case score < 180:
+        setLevel("Blue");
+        break;
+      case score < 220:
+        setLevel("Brown");
+        break;
+      case score < 280:
+        setLevel("Red");
+        break;
+      case score >= 400:
+        setLevel("Black");
+        break;
+      default:
+        // handle any other case
+        break;
+    }
+  }, [score]);
 
   const [redirect, setRedirect] = useState(false);
   const history = useHistory();
@@ -94,44 +143,39 @@ const Profile: React.FC = () => {
   const altText = "Description of the image";
 
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <NavBar username={username}></NavBar>
+
       <div className="profile-container">
         <div className="profile-content">
-          <div className="profile-container">
+          <div className="badge-container" style={{ height: "10px" }}>
+            <Badge username={username} level={level}></Badge>
+          </div>
+          <div className="profile-picture-container">
             <img className="profile-picture" src={imageUrl} alt={altText} />
           </div>
-          <div className="textStyle">
-            <b>Username: {username}</b>
+          <div
+            style={{
+              padding: "10px",
+              fontSize: "16px",
+              marginTop: "0px",
+            }}
+          >
+            <div className="textStyle">
+              <b>Username: {username}</b>
+            </div>
+            <div className="textStyle" style={{ width: "280px" }}>
+              <i>Despre tine: "{descr}"</i>
+            </div>
           </div>
           <Form onSubmit={handleSubmit}>
             {testData.length > 0 && <Table data={testData} />}
-            <br />
-            <br />
-            <Button
-              variant="primary"
-              type="submit"
-              style={{
-                backgroundColor: "#333dd7b8",
-                marginRight: "0px",
-                display: "flex",
-                alignItems: "center", // Aliniaza textul în mijlocul butonului
-                justifyContent: "center", // Aliniaza textul și în orizontală
-              }}
-            >
-              See more tests
-            </Button>
           </Form>
         </div>
         <div className="chat-container">
           {/* Chat UI */}
           <div className="chat-messages">{/* Render chat messages here */}</div>
-          <Form className="chat-input">
-            <FormControl type="text" placeholder="Type a message" />
-            <Button variant="primary" type="submit">
-              Send
-            </Button>
-          </Form>
+          <Chat username={username}></Chat>
         </div>
       </div>
     </div>

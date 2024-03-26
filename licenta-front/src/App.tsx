@@ -25,6 +25,13 @@ import ProgramareDinamica from "./ProgramareDinamica";
 import GrafuriNeorientate from "./GrafuriNeorientate";
 import GrafuriAlgoritmi from "./GrafuriAlgoritmi";
 import TeoriaGrafurilor from "./GrafuriNeorientate";
+import Raspunsuri from "./Raspunsuri";
+import SignIn from "./SignIn";
+import Quest from "./Quest";
+import MainQuest from "./MainQuest";
+import SubmitQuest from "./SubmitQuest";
+import Podium from "./Podium";
+import Chart from "./Chart";
 
 function App() {
   return (
@@ -37,6 +44,7 @@ function App() {
         <Route path="/lectie" component={Lectie} />
         <Route path="/submit" component={SubmitPage} />
         <Route path="/lessons" component={Lessons} />
+        <Route path="/quest" component={Quest} />
         <Route path="/instructiuni" component={Instructiuni} />
         <Route path="/lectii-clasa-a-noua" component={ClasaANoua} />
         <Route path="/algoritmi-elementari" component={AlgoritmiElementari} />
@@ -53,7 +61,13 @@ function App() {
         <Route path="/teoria-grafurilor" component={TeoriaGrafurilor} />
         <Route path="/stiva" component={Stack} />
         <Route path="/grafuri-algoritmi" component={GrafuriAlgoritmi} />
+        <Route path="/raspunsuri" component={Raspunsuri} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/main-quest" component={MainQuest} />
+        <Route path="/submit-quest" component={SubmitQuest} />
+        <Route path="/podium" component={Podium} />
 
+        <Route path="/chart" component={Chart} />
         <Route
           path="/tablouri-bidimenisonale"
           component={TablouriBidimensionale}

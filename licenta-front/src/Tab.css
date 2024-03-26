@@ -1,0 +1,27 @@
+/* Clasa pentru containerul tab-urilor */
+.tab-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  /* Clasa pentru tab-uri */
+  .tab {
+    float: left;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Clasa pentru tab-ul activ */
+  .tab.active {
+    background-color: #4875a6b2;
+  }
+  
+  /* Clasa pentru conținutul tab-urilor */
+  .tab-content {
+    clear: both;
+    padding: 20px;
+    border-top: 1px solid #04172f;
+  }
+  

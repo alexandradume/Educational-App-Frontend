@@ -108,6 +108,7 @@ const RedirectionareLectii: React.FC<Props> = ({ username, clasa }) => {
     "Greedy",
     "Programare dinamică",
     "Teoria grafurilor",
+    "Lecții",
   ];
 
   return (
@@ -115,9 +116,10 @@ const RedirectionareLectii: React.FC<Props> = ({ username, clasa }) => {
       <div
         style={{
           marginTop: "30px",
-          marginLeft: "10px",
+          marginLeft: "20px",
         }}
       >
+        <br></br>
         {clasa === "9" &&
           vector9.map((lesson, index) => (
             <div key={index}>

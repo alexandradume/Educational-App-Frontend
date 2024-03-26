@@ -1,0 +1,20 @@
+.tooltip-container {
+  position: relative;
+  height: 100%; /* Înălțimea navbar-ului */
+  width: 100%; /* Lățimea navbar-ului */
+}
+
+.tooltip-text {
+  position: absolute;
+  color: black;
+  top: calc(100% - 45px); /* Plasează tooltip-ul sub navbar */
+  left: 50%; /* Aliniază tooltip-ul la centru față de elementul părinte */
+  transform: translateX(-50%); /* Centrează tooltip-ul orizontal */
+  width: 100%; /* Tooltip-ul ocupă întreaga lățime a navbar-ului */
+  background-color: rgba(41, 79, 120, 0.846);
+  padding: 10px;
+  border-radius: 4px;
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Asigură afișarea tooltip-ului deasupra altor elemente */
+}
