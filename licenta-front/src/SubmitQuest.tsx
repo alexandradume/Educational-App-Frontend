@@ -82,7 +82,7 @@ const SubmitQuest: React.FC = () => {
           Profil
         </Button>
         <Button
-          onClick={() => handleRedirect("/quest", { username: username })}
+          onClick={() => handleRedirect("/map", { username: username })}
           style={{
             marginLeft: "200px",
             marginTop: "20px",

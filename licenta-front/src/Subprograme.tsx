@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -389,6 +390,8 @@ void interschimbare(int &a, int &b) { //Este de tipul void, deoarece nu se retur
             <pre style={{ fontFamily: "inherit" }}>{text6}</pre>
           </div>
         </section>
+
+        <Carusel category="Subprograme" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

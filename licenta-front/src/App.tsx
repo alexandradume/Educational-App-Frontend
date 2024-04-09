@@ -32,6 +32,7 @@ import MainQuest from "./MainQuest";
 import SubmitQuest from "./SubmitQuest";
 import Podium from "./Podium";
 import Chart from "./Chart";
+import Map from "./Map";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
         <Route path="/main-quest" component={MainQuest} />
         <Route path="/submit-quest" component={SubmitQuest} />
         <Route path="/podium" component={Podium} />
+        <Route path="/map" component={Map} />
 
         <Route path="/chart" component={Chart} />
         <Route

@@ -6,6 +6,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -658,6 +659,10 @@ while(j < m)
             <pre style={{ fontFamily: "inherit" }}>{text18}</pre>
           </div>
         </section>
+        <Carusel
+          category="Tablouri Unidimensionale"
+          username={username}
+        ></Carusel>
       </main>
       <footer>
         <Button

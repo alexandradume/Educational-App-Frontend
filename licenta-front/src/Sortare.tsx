@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -231,6 +232,8 @@ for(int i = 1 ; i < n ; i ++)
             />
           </div>
         </section>
+
+        <Carusel category="Sortare" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

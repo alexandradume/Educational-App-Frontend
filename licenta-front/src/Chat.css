@@ -1,37 +1,90 @@
+/* Containerul pentru întregul chat */
 .chat-container {
-    display: flex;
-    flex-direction: column; /* Afișează elementele într-o coloană */
-    justify-content: space-between; /* Aliniază elementele pe toată înălțimea containerului */
-    background-color: #f5f5f5;
-    padding: 20px;
-    height: 70vh;
-    margin: 20px;
-    width: 350px;
-  }
-  
-  
-  .chat-messages {
-    height: 200px; /* Adjust as needed */
-    overflow-y: auto;
-  }
-  
-  .textStyle{
-    size:30px;
-    margin-top: 20px;
-    margin-left: 0px;
-   
-  }
-  
-  .chat-input {
-    display: flex;
-  }
-  
-  .chat-input input {
-    margin-bottom: 0px;
-    flex: 1;
-    margin-right:10px;
-  }
-  
-  .chat-input button {
-    width: 80px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 20px;
+  height: 75vh;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Containerul pentru mesaje */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Stilizarea mesajelor */
+.messageDiv {
+  max-width: 70%; /* Limităm lățimea mesajelor */
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+
+.messageDivEven {
+  padding:10px;
+  background-color: #695cb470;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin:10px;
+  width: 70%;
+  margin: 10px;
+  float: right;
+}
+
+.messageDivOdd {
+  padding:10px;
+  background-color: #2b5e996a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin: 10px;
+  width: 70%;
+  float: left;
+}
+
+
+.DateDivEven {
+  width: 70%;
+  float: right;
+  margin-left: auto; /* Poziționează elementul cât mai în dreapta */
+}
+
+
+.DateDivOdd {
+  width: 70%;
+  margin-Left: 10px;
+  float: left;
+}
+
+/* Stilizarea inputului și butonului */
+.chat-input {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.chat-input button {
+  margin:5px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #333ed744;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: #d3c5ff9c;
+}

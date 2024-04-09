@@ -7,6 +7,7 @@ import "./MainQuest.css";
 
 interface LocationState {
   username: string;
+  number: number;
 }
 
 interface Question {
@@ -20,7 +21,7 @@ interface Question {
 
 const MainQuest: React.FC = () => {
   const location = useLocation<LocationState>();
-  const { username } = location.state;
+  const { username, number } = location.state;
   const [visible, setVisible] = useState(false);
   const [visibleAnswer, setVisibleAnswer] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -36,6 +37,8 @@ const MainQuest: React.FC = () => {
   const eyeImage = "./src/assets/search.png";
   const [score, setScore] = useState<number>(0);
 
+  const category = "Quest" + number;
+
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -49,7 +52,7 @@ const MainQuest: React.FC = () => {
   }, [timeElapsed]);
 
   const fetchQuestions = () => {
-    const url = `http://localhost:8080/api/questions`;
+    const url = `http://localhost:8080/api/questions/quest?category=${category}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

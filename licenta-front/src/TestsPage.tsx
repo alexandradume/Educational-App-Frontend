@@ -89,11 +89,11 @@ function TestsPage() {
                 Algoritmi Elementari
               </span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>
-                Tablouri unidimenisonale
+              <span onClick={() => handleClick("Tablouri unidimensionale")}>
+                Tablouri unidimensionale
               </span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>
+              <span onClick={() => handleClick("Tablouri bidimensionale")}>
                 Tablouri bidimesnionale <br />
               </span>
             </b>
@@ -110,14 +110,11 @@ function TestsPage() {
           <h2>Clasa a X-a</h2>
           <span>
             <b>
-              <span onClick={() => handleClick("Elemente de baza")}>
-                Subprograme
+              <span onClick={() => handleClick("Recursivitate")}>
+                Subprograme/Recursivitate
               </span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>
-                Recursivitate
-              </span>
-              <br />
+
               <span onClick={() => handleClick("Elemente de baza")}>
                 Divide Et Impera
               </span>
@@ -126,10 +123,9 @@ function TestsPage() {
                 Șiruri de caractere
               </span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>Stiva</span>
+              <span onClick={() => handleClick("Coada")}>Stiva/Coada</span>
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>Coada</span>
-              <br />
+
               <span onClick={() => handleClick("Elemente de baza")}>
                 Liste alocate dinamic
               </span>

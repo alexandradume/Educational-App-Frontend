@@ -8,6 +8,7 @@ interface Props {
 }
 
 const Badge: React.FC<Props> = ({ username, level }) => {
+  console.log(level);
   const history = useHistory();
   console.log(level);
   const [denumire, setDenumire] = useState("");
@@ -26,7 +27,7 @@ const Badge: React.FC<Props> = ({ username, level }) => {
       case level == "Green":
         setDenumire("Centura Verde în C++");
         break;
-      case level == "blue":
+      case level == "Blue":
         setDenumire("Centura Albastră în C++");
         break;
       case level == "Brown":

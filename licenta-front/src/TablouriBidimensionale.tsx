@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -107,7 +108,7 @@ for(int i = 1; i <= n; i++) {
         </section>
 
         <section>
-          n C++, matricele extind vectorii în 2D — de unde vine și numele de
+          În C++, matricele extind vectorii în 2D — de unde vine și numele de
           tablou bidimensional. Mai exact, într-o matrice, elementele sunt
           organizate pe linii și pe coloane.
           <div
@@ -235,6 +236,10 @@ for(int i = 1; i <= n; i++) {
           />
         </section>
 
+        <Carusel
+          category="Tablouri Bidimensionale"
+          username={username}
+        ></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

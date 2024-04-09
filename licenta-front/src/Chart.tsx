@@ -37,6 +37,8 @@ export default function Chart() {
   const { username } = location.state;
   const [userData, setUserData] = useState<UserData | null>(null);
   const smileImage = "./src/assets/smile.png";
+  const [score, setScore] = useState(0);
+  const [scores, setScores] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +52,8 @@ export default function Chart() {
         const data = await response.json();
         console.log(data);
         setUserData(data);
+        setScore(data.score);
+        setScores(data.scores);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -58,20 +62,29 @@ export default function Chart() {
     fetchData();
   }, [username]);
 
-  // Transformați datele din câmpul scores într-un array de obiecte
-  const chartData = userData
-    ? Object.entries(userData.scores).map(([date, score]) => ({
-        date,
-        score,
-      }))
-    : [];
+  // Transformați d{atele din câmpul scores într-un array de obiecte
 
-  var currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
-  const currentDay = currentDate.getDate();
-  var datee = currentDay + "." + currentMonth + "." + currentYear;
-  //chartData.push({ date: datee, score: userData!.score });
+  var chartData: { date: string; score: number }[] = [];
+
+  if (userData && userData.scores) {
+    chartData = Object.entries(userData.scores)
+      .map(([date, score]) => ({ date, score }))
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    // Adaugarea scorului curent
+    var currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    var currentDay = currentDate.getDate();
+
+    if (currentMonth < 9) {
+      var datee = currentYear + "-" + "0" + currentMonth + "-" + currentDay;
+    } else {
+      var datee = currentYear + "-" + currentMonth + "-" + currentDay;
+    }
+
+    chartData.push({ date: datee, score: userData.score });
+  }
 
   return (
     <div>
@@ -101,8 +114,8 @@ export default function Chart() {
             }}
           >
             <p style={{ fontSize: "20px" }}>
-              Mai jos găsești graficul corespunzător scorului tău de-alungul
-              timpului. Poți analiza și contoriza evoluția ta. Îți dormi succes
+              Mai jos găsești graficul corespunzător scorului tău de-a lungul
+              timpului. Poți analiza și contoriza evoluția ta. Îți dorim succes
               în procesul de învățare
               <img
                 style={{ height: "25px", marginLeft: "2%", marginTop: "1%" }}
@@ -113,36 +126,37 @@ export default function Chart() {
           </div>
           <br></br>
         </div>
-
-        <div className="section col-md-6">
-          <div
-            className="section-content"
-            style={{
-              display: "flex",
-              marginLeft: "23%",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart
-                data={chartData}
-                margin={{ top: 15, right: 0, bottom: 15, left: 0 }}
-              >
-                <XAxis dataKey="date" />
-                <YAxis />
-                <CartesianGrid stroke="#ccc" strokeDasharray="10 10" />
-                <Tooltip />
-                <Line
-                  type="natural"
-                  dataKey="score"
-                  stroke="#8884d8"
-                  strokeWidth={2}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+        {chartData != undefined && (
+          <div className="section col-md-6">
+            <div
+              className="section-content"
+              style={{
+                display: "flex",
+                marginLeft: "23%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart
+                  data={chartData}
+                  margin={{ top: 15, right: 0, bottom: 15, left: 0 }}
+                >
+                  <XAxis dataKey="date" />
+                  <YAxis />
+                  <CartesianGrid stroke="#ccc" strokeDasharray="10 10" />
+                  <Tooltip />
+                  <Line
+                    type="natural"
+                    dataKey="score"
+                    stroke="#8884d8"
+                    strokeWidth={2}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

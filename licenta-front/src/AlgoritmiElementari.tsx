@@ -6,6 +6,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -256,7 +257,7 @@ int main()
     int n, d;
     cin>>n ;
     d = 2;
-    while ( d * d <= n && 3 n % d > 0 ) /* condiția de oprire este d * d > n or n % d == 0 adică ori nu am găsit {
+    while ( d * d <= n && n % d > 0 ) /* condiția de oprire este d * d > n or n % d == 0 adică ori nu am găsit {
         d = d + 1; niciun divizor, ori am găsit primul divizor */
     if ( d * d > n )
         cout<<”d este prim ";
@@ -557,7 +558,7 @@ int main()
             <pre style={{ fontFamily: "inherit" }}>{text13}</pre>
           </div>
         </section>
-
+        <Carusel category="Algoritmi Elementari" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

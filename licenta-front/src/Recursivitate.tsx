@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -104,8 +105,10 @@ int main()
       </header>
       <main>
         <section>
-        <RedirectionareLectii  username={username}
-          clasa={"10"}></RedirectionareLectii>
+          <RedirectionareLectii
+            username={username}
+            clasa={"10"}
+          ></RedirectionareLectii>
         </section>
         <section>
           Să ne gândim la un copac: acesta are ramuri, fiecare ramură având la
@@ -243,6 +246,8 @@ int main()
           geometrice, factorialul, etc.) s-au implementat deja nerecursiv.
           Așadar, nu are sens să reinventăm roata.
         </section>
+
+        <Carusel category="Recursivitate" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

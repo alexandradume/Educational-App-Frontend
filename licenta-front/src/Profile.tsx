@@ -68,7 +68,6 @@ const Profile: React.FC = () => {
     if (userData) {
       setDescr(userData.description);
       setMoney(userData.money);
-     
     }
     if (userData && userData.tests) {
       setScore(userData.score);
@@ -82,6 +81,8 @@ const Profile: React.FC = () => {
       setTestData(testData);
     }
   }, [userData]);
+
+  console.log(score);
 
   useEffect(() => {
     switch (true) {
@@ -106,7 +107,7 @@ const Profile: React.FC = () => {
       case score < 280:
         setLevel("Red");
         break;
-      case score >= 400:
+      case score >= 280:
         setLevel("Black");
         break;
       default:
@@ -161,6 +162,7 @@ const Profile: React.FC = () => {
               marginTop: "0px",
             }}
           >
+            <br></br>
             <div className="textStyle">
               <b>Username: {username}</b>
             </div>

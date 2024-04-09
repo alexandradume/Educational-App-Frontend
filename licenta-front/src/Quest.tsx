@@ -39,16 +39,17 @@ const Quest: React.FC = () => {
           marginBottom: "20px", // Adăugăm un margin-bottom pentru a crea spațiu între text și butoane
         }}
       >
-        Bine ai venit la quest-ul din această săptămână, {username}!<br></br>
-        Acest quest te va ajuta să aduni atât puncte pentru a demonstra că ai
+        Bine ai venit {username}!<br></br>
+        Questurile te vor ajuta să aduni atât puncte pentru a demonstra că ai
         căpătat cunoștiințe, cât și în obținerea unei evaluări sincere <br></br>
         pentru marele examen care te așteaptă! Nu uita că fiecare punct acumulat
         te aduce mai aproape de centura neagră.
         <br></br>
-        Întrebarea cea mai importantă acum este:<br></br> <b> Ești pregătit?</b>
+        Întrebarea cea mai importantă acum este:<br></br>{" "}
+        <b> Ești pregătit să intrii în Ținutul Biților?</b>
         <br></br>
         <Button
-          onClick={() => handleRedirect("/main-quest", { username: username })}
+          onClick={() => handleRedirect("/map", { username: username })}
           style={{
             marginLeft: "290px",
             marginTop: "20px",

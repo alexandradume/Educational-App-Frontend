@@ -1,0 +1,28 @@
+.quest {
+    width: 3vw; /* adaugă unitatea de măsură */
+    height: 5vh; /* adaugă unitatea de măsură */
+    border-radius: 50%; /* setează border-radius la 50% pentru a face un cerc */
+    background-color: rgb(33, 99, 125); /* corectează denumirea proprietății background-color */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* corectează denumirea proprietății z-index */
+}
+
+.quest:hover{
+    background-color: rgb(78, 138, 161); 
+}
+
+
+.quest-div{
+    height: auto;
+    position: absolute;
+    top: 50%;
+    background-Color: rgba(157, 138, 115, 0.841);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-Index: 1;
+    padding:30px;
+    font-size: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
