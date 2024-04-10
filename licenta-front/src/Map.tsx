@@ -134,7 +134,11 @@ const Map: React.FC<NavBarProps> = () => {
               : "0 2px 4px rgba(0, 0, 0, 0.0)",
         }}
         onClick={() =>
-          handleRedirect("/main-quest", { username: username, number: 1 }, 1)
+          handleRedirect(
+            "/main-quest",
+            { username: username, number: 1, doneQuest: doneQuest },
+            1
+          )
         }
       ></Button>
 
@@ -155,7 +159,11 @@ const Map: React.FC<NavBarProps> = () => {
               : "0 2px 4px rgba(0, 0, 0, 0.0)",
         }}
         onClick={() =>
-          handleRedirect("/main-quest", { username: username, number: 2 }, 2)
+          handleRedirect(
+            "/main-quest",
+            { username: username, number: 2, doneQuest: doneQuest },
+            2
+          )
         }
       ></Button>
 
@@ -176,7 +184,11 @@ const Map: React.FC<NavBarProps> = () => {
               : "0 2px 4px rgba(0, 0, 0, 0.0)", // Fără umbră
         }}
         onClick={() =>
-          handleRedirect("/main-quest", { username: username, number: 3 }, 3)
+          handleRedirect(
+            "/main-quest",
+            { username: username, number: 3, doneQuest: doneQuest },
+            3
+          )
         }
       ></Button>
 
@@ -197,7 +209,11 @@ const Map: React.FC<NavBarProps> = () => {
               : "0 2px 4px rgba(0, 0, 0, 0.0)",
         }}
         onClick={() =>
-          handleRedirect("/main-quest", { username: username, number: 4 }, 4)
+          handleRedirect(
+            "/main-quest",
+            { username: username, number: 4, doneQuest: doneQuest },
+            4
+          )
         }
       ></Button>
 
@@ -218,7 +234,11 @@ const Map: React.FC<NavBarProps> = () => {
               : "0 2px 4px rgba(0, 0, 0, 0.0)",
         }}
         onClick={() =>
-          handleRedirect("/main-quest", { username: username, number: 5 }, 5)
+          handleRedirect(
+            "/main-quest",
+            { username: username, number: 5, doneQuest: doneQuest },
+            5
+          )
         }
       ></Button>
 

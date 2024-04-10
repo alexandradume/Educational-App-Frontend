@@ -158,7 +158,7 @@ function TestsPage() {
               </span>
 
               <br />
-              <span onClick={() => handleClick("Elemente de baza")}>
+              <span onClick={() => handleClick("Teoria Grafurilor")}>
                 {" "}
                 Teoria grafurilor
               </span>

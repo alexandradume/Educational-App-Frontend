@@ -2,18 +2,22 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap"; // Asigură-te că importezi corect componenta pentru butoane
 import { Redirect, useHistory } from "react-router-dom";
+import { number } from "mathjs";
 interface LocationState {
   username: string;
   score: number;
+  number: number;
+  doneQuest: number;
 }
 
 const SubmitQuest: React.FC = () => {
   const history = useHistory();
   const location = useLocation<LocationState>();
-  const { username, score } = location.state;
+  const { username, score, number, doneQuest } = location.state;
   const knightmage = "./src/assets/knight.png";
   const questImage = "./src/assets/quest1.png";
   const winnerImage = "./src/assets/winner.png";
+  console.log("iuuuuuuuuuu" + number + doneQuest);
 
   const handleRedirect = (pathname: string, state: any) => {
     history.push({ pathname, state });
@@ -67,7 +71,7 @@ const SubmitQuest: React.FC = () => {
 
           <div style={{ font: "30px" }}>
             {" "}
-            <b>Scorul tău este {score}/4</b>
+            <b>Scorul tău este {score}/5</b>
           </div>
         </div>
         <br></br>

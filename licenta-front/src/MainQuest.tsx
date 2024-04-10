@@ -8,6 +8,7 @@ import "./MainQuest.css";
 interface LocationState {
   username: string;
   number: number;
+  doneQuest: number;
 }
 
 interface Question {
@@ -21,7 +22,7 @@ interface Question {
 
 const MainQuest: React.FC = () => {
   const location = useLocation<LocationState>();
-  const { username, number } = location.state;
+  const { username, number, doneQuest } = location.state;
   const [visible, setVisible] = useState(false);
   const [visibleAnswer, setVisibleAnswer] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -37,6 +38,7 @@ const MainQuest: React.FC = () => {
   const eyeImage = "./src/assets/search.png";
   const [score, setScore] = useState<number>(0);
 
+  console.log("aaaaaaaaaaa" + number);
   const category = "Quest" + number;
 
   useEffect(() => {
@@ -126,6 +128,24 @@ const MainQuest: React.FC = () => {
     }
     console.log("Score" + newScore);
 
+    if (number - 1 == doneQuest) {
+      try {
+        const response = await axios.put(
+          `http://localhost:8080/api/users/updateNumberOfDoneQuest`,
+          null,
+          {
+            params: {
+              username: username,
+              newNumberOfDoneQuest: number,
+            },
+          }
+        );
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Error updating score:", error);
+      }
+    }
+
     try {
       const response = await axios.put(
         `http://localhost:8080/api/users/updateScore`,
@@ -157,7 +177,12 @@ const MainQuest: React.FC = () => {
       <Redirect
         to={{
           pathname: `/submit-quest`,
-          state: { username: username, score: score },
+          state: {
+            username: username,
+            score: score,
+            number: number,
+            doneQuest: doneQuest,
+          },
         }}
       />
     );
