@@ -100,7 +100,7 @@ const Podium: React.FC = () => {
           className={`tab ${activeTab === "bani" && "active"}`}
           onClick={() => handleTabClick("bani")}
         >
-          Podium după bani
+          Podium după monede px
         </div>
       </div>
 

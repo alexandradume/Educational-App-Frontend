@@ -5,6 +5,7 @@ import Table from "./Table";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import "./Map.css";
+import axios from "axios";
 import Tooltip from "./Tooltip";
 
 interface NavBarProps {
@@ -35,6 +36,7 @@ const Map: React.FC<NavBarProps> = () => {
   const history = useHistory();
   const profileImage = "./src/assets/map.jpeg";
   const exitImage = "./src/assets/no.png";
+  const redoImage = "./src/assets/redo.png";
   const chestImage = "./src/assets/treasure-chest.png";
   const unopendChestImage = "./src/assets/treasure-chestt.png";
   const smileImage = "./src/assets/smile.png";
@@ -71,6 +73,26 @@ const Map: React.FC<NavBarProps> = () => {
     }
   };
 
+  const handleRedo = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/users/updateNumberOfDoneQuest`,
+        null,
+        {
+          params: {
+            username: username,
+            newNumberOfDoneQuest: 0,
+          },
+        }
+      );
+      console.log("Response:", response.data);
+      // Reîncarcăm pagina
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating score:", error);
+    }
+  };
+
   return (
     <div style={{ position: "relative", overflow: "hidden" }}>
       <img
@@ -101,6 +123,26 @@ const Map: React.FC<NavBarProps> = () => {
         />
       </Button>
 
+      <Button
+        style={{
+          position: "absolute",
+          height: "12vh",
+          width: "10wh",
+          top: "15%",
+          backgroundColor: "transparent",
+          left: "97%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 1, // Asigură că butonul este afișat peste imagine
+        }}
+        onClick={() => handleRedo()}
+      >
+        <img
+          style={{ height: "8vh", width: "6wh" }}
+          src={redoImage}
+          alt="Binary"
+        />
+      </Button>
+
       <img
         style={{
           height: "70px",
@@ -111,7 +153,7 @@ const Map: React.FC<NavBarProps> = () => {
           transform: "translate(-50%, -50%)",
           zIndex: 1,
         }}
-        src={doneQuest < 6 ? unopendChestImage : chestImage}
+        src={doneQuest < 5 ? unopendChestImage : chestImage}
         alt="Binary"
         onClick={() =>
           handleRedirect("/main-quest", { username: username, number: 6 }, 6)
@@ -256,6 +298,14 @@ const Map: React.FC<NavBarProps> = () => {
             quest-urile disponibile. La final te așteaptă o comoară
             surprinzătoare!
           </b>
+          {doneQuest == 5 ? (
+            <div>
+              <b>
+                Poți încerca să obții comoara noastră acum, trebuie să sapi
+                destul de adânc în cunoștiințe pentru a o obține{" "}
+              </b>
+            </div>
+          ) : null}
           <img
             style={{ height: "25px", marginLeft: "2%", marginTop: "1%" }}
             alt="Binary"

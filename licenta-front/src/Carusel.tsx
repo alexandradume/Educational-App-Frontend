@@ -115,7 +115,7 @@ const Carusel: React.FC<Props> = ({ username, category }) => {
               <FormControl
                 type="input"
                 className="inputt"
-                placeholder="Enter your text here..."
+                placeholder="introdu răspunsul"
                 value={inputValues[currentIndex] || ""}
                 style={{ height: "30px", width: "200px" }}
                 onChange={handleChange}

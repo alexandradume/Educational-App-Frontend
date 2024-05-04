@@ -34,13 +34,16 @@ const Table: React.FC<Table> = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{item.category}</td>
-                <td>{item.score}</td>
-              </tr>
-            ))}
+            {data
+              .slice() // Facem o copie a array-ului pentru a nu modifica array-ul original
+              .sort((a, b) => b.score - a.score) // Sortăm descrescător după scor
+              .map((item, index) => (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{item.category}</td>
+                  <td>{item.score}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

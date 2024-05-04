@@ -37,7 +37,7 @@ function Test() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeElapsed(timeElapsed + 1);
-    }, 1000);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [timeElapsed]);

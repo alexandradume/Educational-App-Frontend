@@ -1,13 +1,29 @@
 .divAnswer{
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
-    border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px; /* Adjust this value to add space between questions */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+border-radius: 8px;
+padding: 16px;
+margin-bottom: 20px; /* Adjust this value to add space between questions */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.divQuest{
+height: auto;
+position: absolute;
+top: 6vh;
+background-Color: rgba(154, 186, 216, 0.841);
+left: 9vw;
+transform: translate(-50%, -50%);
+z-Index: 1;
+padding:10px;
+font-size: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+color:azure;
+}
+

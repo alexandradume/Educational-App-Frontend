@@ -115,7 +115,7 @@ function TestsPage() {
               </span>
               <br />
 
-              <span onClick={() => handleClick("Elemente de baza")}>
+              <span onClick={() => handleClick("Divide Et Impera")}>
                 Divide Et Impera
               </span>
               <br />

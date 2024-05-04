@@ -102,6 +102,7 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
 
   return (
     <div style={{ marginLeft: "-30px" }} className="chat-container">
+      <h4 style={{ paddingLeft: "10px", fontSize: "15px" }}>ChatBot</h4>
       <div className="chat-messages">
         {mesaje.map((mesaj, index) => (
           <div>
@@ -138,7 +139,7 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
       <form className="chat-input" onSubmit={handleSendMessage}>
         <input
           type="text"
-          placeholder="Type a message"
+          placeholder="Scrie un mesaj"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />

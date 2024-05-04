@@ -11,6 +11,23 @@ interface LocationState {
   doneQuest: number;
 }
 
+interface UserData {
+  id: {
+    timestamp: number;
+    date: string;
+  };
+  username: string;
+  password: string;
+  description: string;
+  birthdate: string;
+  tests: string[];
+  score: number;
+  money: number;
+  scores: {
+    [date: string]: number; // Cheia este data, iar valoarea este scorul asociat cu acea dată
+  };
+}
+
 interface Question {
   _id: string;
   category: string;
@@ -37,6 +54,11 @@ const MainQuest: React.FC = () => {
   const treasureMapImage = "./src/assets/treasure-map.png";
   const eyeImage = "./src/assets/search.png";
   const [score, setScore] = useState<number>(0);
+  const [sold, setSold] = useState<number>(0);
+
+  const [doneQuesst, setDoneQuest] = useState(0);
+
+  const [change, setChange] = useState(false);
 
   console.log("aaaaaaaaaaa" + number);
   const category = "Quest" + number;
@@ -44,6 +66,26 @@ const MainQuest: React.FC = () => {
   useEffect(() => {
     fetchQuestions();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/users/${username}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setSold(data.money);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [username]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -91,6 +133,7 @@ const MainQuest: React.FC = () => {
   const handleFirstClick = async () => {
     setVisibleAnswer(true);
     try {
+      setSold(sold - 10);
       const response = await axios.put(
         `http://localhost:8080/api/users/updateMoney`,
         null,
@@ -115,6 +158,26 @@ const MainQuest: React.FC = () => {
       setAnswers((prevAnswers) => [...prevAnswers, selectedAnswer]);
   }, [selectedAnswer]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/users/${username}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setDoneQuest(data.numberOfDoneQuest);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [username]);
+
   const scoreUpdate = async () => {
     let newScore = 0;
     console.log(answers);
@@ -128,7 +191,11 @@ const MainQuest: React.FC = () => {
     }
     console.log("Score" + newScore);
 
-    if (number - 1 == doneQuest) {
+    if (
+      (number - 1 == doneQuesst && newScore >= 3 && doneQuesst < 5) ||
+      (doneQuest == 5 && newScore == 5)
+    ) {
+      setChange(true);
       try {
         const response = await axios.put(
           `http://localhost:8080/api/users/updateNumberOfDoneQuest`,
