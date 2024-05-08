@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -96,7 +97,7 @@ function ProgramareDinamica() {
   return (
     <div className="lectie-container">
       <header>
-        <h1>Programare dinamica</h1>
+        <h1>Programare dinamică</h1>
       </header>
       <main>
         <section>
@@ -168,7 +169,7 @@ function ProgramareDinamica() {
             <pre style={{ fontFamily: "inherit" }}>{text}</pre>
           </div>
         </section>
-
+        <Carusel category="Programare dinamică" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

@@ -153,7 +153,7 @@ const Map: React.FC<NavBarProps> = () => {
           transform: "translate(-50%, -50%)",
           zIndex: 1,
         }}
-        src={doneQuest < 5 ? unopendChestImage : chestImage}
+        src={doneQuest < 5 || doneQuest > 5 ? unopendChestImage : chestImage}
         alt="Binary"
         onClick={() =>
           handleRedirect("/main-quest", { username: username, number: 6 }, 6)

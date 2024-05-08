@@ -49,6 +49,7 @@ const MainQuest: React.FC = () => {
   const [answers, setAnswers] = useState<string[]>([]);
   const [redirectSubmitQuest, setRedirectSubmitQuest] =
     useState<boolean>(false);
+  const [dnq, setDnq] = useState<number>(0);
   const mysteryImage = "./src/assets/mystery.png";
   const treasureImage = "./src/assets/treasure.png";
   const treasureMapImage = "./src/assets/treasure-map.png";
@@ -79,6 +80,7 @@ const MainQuest: React.FC = () => {
         const data = await response.json();
         console.log(data);
         setSold(data.money);
+        setDnq(data.numberOfDoneQuest);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -191,9 +193,12 @@ const MainQuest: React.FC = () => {
     }
     console.log("Score" + newScore);
 
+    console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii", dnq, newScore);
+
     if (
       (number - 1 == doneQuesst && newScore >= 3 && doneQuesst < 5) ||
-      (doneQuest == 5 && newScore == 5)
+      (doneQuest == 5 && newScore == 5) ||
+      (dnq == 5 && newScore == 5)
     ) {
       setChange(true);
       try {
@@ -411,7 +416,17 @@ const MainQuest: React.FC = () => {
           Next
         </Button>
       )}
-
+      <div
+        className="div-sold"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "2vh",
+        }}
+      >
+        <b>Sold: {sold} px</b>
+      </div>
       <img
         className="img-top-right"
         style={{ height: "90px", marginTop: "-20px" }}
@@ -425,15 +440,15 @@ const MainQuest: React.FC = () => {
         alt="Binary"
       />
       <img
-        className="img-top-leftt"
-        style={{ height: "100px" }}
+        className="img-toop-leftt"
+        style={{ height: "75px" }}
         src={treasureMapImage}
         alt="Binary"
       />
 
       <img
         className="img-bottom-right"
-        style={{ height: "70px", marginBottom: "25px" }}
+        style={{ height: "70px", marginBottom: "25px", marginTop: "20px" }}
         src={eyeImage}
         alt="Binary"
         onClick={handleClickOnImage}

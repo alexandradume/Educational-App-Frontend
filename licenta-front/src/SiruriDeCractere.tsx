@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -474,7 +475,7 @@ cout << s[10]; // ??? comportament impredictibil: nu exista in sir caracter cu i
           extras, sau NULL dacă nu se mai poate extrage niciun subșir din șirul
           dat.
         </section>
-
+        <Carusel category="Șiruri de caractere" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

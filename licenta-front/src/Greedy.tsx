@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -291,7 +292,7 @@ int main() {
             <pre style={{ fontFamily: "inherit" }}>{text1}</pre>
           </div>
         </section>
-
+        <Carusel category="Greedy" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}

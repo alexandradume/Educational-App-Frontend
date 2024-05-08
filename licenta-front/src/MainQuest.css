@@ -27,3 +27,20 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 color:azure;
 }
 
+
+
+.div-sold{
+  height: auto;
+  position: absolute;
+  top: 15%;
+  background-Color: rgba(162, 134, 206, 0.278);
+  left:0%;
+  margin-Left:0px;
+  transform: translate(-50%, -50%);
+  z-Index: 1;
+  padding:30px;
+  font-size: 20px;
+  border-radius: 8px;
+  color:white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -92,10 +93,10 @@ function DivideEtImpera() {
       </header>
       <main>
         <section>
-         <RedirectionareLectii
-          username={username}
-          clasa={"10"}
-         ></RedirectionareLectii>
+          <RedirectionareLectii
+            username={username}
+            clasa={"10"}
+          ></RedirectionareLectii>
         </section>
 
         <section>
@@ -213,6 +214,7 @@ function DivideEtImpera() {
             <pre style={{ fontFamily: "inherit" }}>{text}</pre>
           </div>
         </section>
+        <Carusel category="Divide Et Impera" username={username}></Carusel>
 
         <img
           className="img-top-right"

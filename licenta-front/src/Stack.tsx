@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -165,10 +166,10 @@ int main() {
       </header>
       <main>
         <section>
-       <RedirectionareLectii
-        username={username}
-        clasa={"10"}>
-       </RedirectionareLectii>
+          <RedirectionareLectii
+            username={username}
+            clasa={"10"}
+          ></RedirectionareLectii>
         </section>
 
         <section>
@@ -307,6 +308,8 @@ int main() {
             <pre style={{ fontFamily: "inherit" }}>{text2}</pre>
           </div>
         </section>
+
+        <Carusel category="Stiva" username={username}></Carusel>
 
         <img
           className="img-top-right"

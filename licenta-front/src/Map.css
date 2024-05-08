@@ -13,16 +13,33 @@
 }
 
 
+.div-sold{
+    height: auto;
+    position: absolute;
+    top: 5%;
+    background-Color: rgba(157, 138, 115, 0);
+    left: 10%;
+    transform: translate(-50%, -50%);
+    z-Index: 1;
+    padding:15px;
+    font-size: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
 .quest-div{
     height: auto;
     position: absolute;
     top: 50%;
-    background-Color: rgba(157, 138, 115, 0.841);
+    background-Color: rgba(157, 138, 115, 0.791);
     left: 50%;
     transform: translate(-50%, -50%);
     z-Index: 1;
-    padding:30px;
+    padding:15px;
     font-size: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color:black;
 }

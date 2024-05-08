@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import RedirectionareLectii from "./RedirectionareLectii";
+import Carusel from "./Carusel";
 
 interface LocationState {
   username: string;
@@ -513,9 +514,9 @@ function TeoriaGrafurilor() {
             src={conexImage}
             alt="Binary"
           />
-          ' Un graf neorientat <i>G</i> se numește <b>tare-conex</b> dacă pentru
+          Un graf neorientat <i>G</i> se numește <b>tare-conex</b> dacă pentru
           oricare două noduri <i>x</i> și <i>y</i> le sale există atât drum de
-          la <i>x</i> la <i>y</i> cât și drum de la <i>y</i> la <i>x</i>. O
+          la <i>x</i> la <i>y</i> cât și drum de la <i>y</i> la <i>x</i>. O{" "}
           <b>componentă tare-conexă </b>a lui <i>G</i> este un subgraf
           tare-conex maximal al său.
         </section>
@@ -529,7 +530,7 @@ function TeoriaGrafurilor() {
                 Adesea, modelarea problemelor practice necesită utilizarea unor
                 grafuri în care muchiilor/ arcelor li se asociază costuri
                 (ponderi). Astfel de grafuri se numesc <b>grafuri ponderate</b>.
-                uncția care asociază câte un cost fiecărei muchii/ arc a
+                Funcția care asociază câte un cost fiecărei muchii/ arc a
                 grafului se numește <b>funcție de cost</b>. De exemplu, avem un
                 graf <i>G = (V, E)</i> e reprezintă harta unei țări, și funcția{" "}
                 <i>
@@ -552,6 +553,7 @@ function TeoriaGrafurilor() {
             </div>
           </div>
         </section>
+        <Carusel category="Grafuri" username={username}></Carusel>
         <img
           className="img-top-right"
           style={{ height: "70px" }}
