@@ -10,6 +10,8 @@ import {
   Tooltip,
 } from "recharts";
 import NavBar from "./NavBar";
+import "./Chart.css";
+import { Form, FormControl, Button } from "react-bootstrap";
 
 interface UserData {
   id: {
@@ -39,6 +41,36 @@ export default function Chart() {
   const smileImage = "./src/assets/smile.png";
   const [score, setScore] = useState(0);
   const [scores, setScores] = useState([]);
+  const magicImage = "./src/assets/magic-ball.png";
+  const [visible, setVisible] = useState<boolean>(false);
+  const [prediction, setPrediction] = useState(0);
+
+  const handleClick = () => {
+    setVisible(true);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/users/prediction/${username}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+
+        setPrediction(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [username]);
+
+  console.log("PREDICTIOOOOOOOOOOOOOOOOOOON", prediction);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -158,6 +190,32 @@ export default function Chart() {
           </div>
         )}
       </div>
+      <img
+        style={{
+          position: "absolute",
+          bottom: "2vh",
+          right: 0,
+          marginRight: "2vw",
+          height: "13vh",
+        }}
+        onClick={handleClick}
+        src={magicImage}
+        alt="Binary"
+      />
+      {visible ? (
+        <div className="prediction-div">
+          {" "}
+          <b>
+            Prezicem că în curând poți ajunge la {prediction} dacă continui cu
+            același spor.
+          </b>
+          <br></br>
+          <br></br>
+          <Button   variant="primary"
+          type="submit"
+          onClick={() => setVisible(false)}>Am înțeles</Button>
+        </div>
+      ) : null}
     </div>
   );
 }
