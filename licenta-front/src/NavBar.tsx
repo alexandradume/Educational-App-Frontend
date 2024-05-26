@@ -59,6 +59,25 @@ const NavBar: React.FC<NavBarProps> = ({ username }) => {
     fetchData();
   }, [username]);
 
+  const [windowFullyVisible, setWindowFullyVisible] = useState(true);
+
+  useEffect(() => {
+    // Funcție pentru verificarea dacă fereastra este afișată complet
+    const handleWindowResize = () => {
+      // Verifică dacă lățimea ferestrei este egală cu lățimea totală a documentului
+      const fullyVisible = window.innerWidth === document.body.clientWidth;
+      setWindowFullyVisible(fullyVisible);
+    };
+
+    // Adaugă un event listener pentru redimensionarea ferestrei
+    window.addEventListener("resize", handleWindowResize);
+
+    // Cleanup: elimină event listener-ul când componenta se demontează
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   // Function to handle redirection with state
   const handleRedirect = (pathname: string, state: any) => {
     history.push({ pathname, state });
@@ -185,7 +204,9 @@ const NavBar: React.FC<NavBarProps> = ({ username }) => {
       </a>
 
       <a
-        style={{ marginLeft: "500px" }}
+        style={{
+          marginLeft: windowFullyVisible ? "40vw" : "auto",
+        }} // Adăugăm margin-left: auto pentru a împinge butonul "Log Out" la marginea din dreapta
         onClick={() => handleRedirect1("/logIn")}
       >
         <Tooltip text="Log Out">
@@ -196,7 +217,7 @@ const NavBar: React.FC<NavBarProps> = ({ username }) => {
               marginBottom: "0px",
             }}
             src={logOutImage}
-            alt="Binary"
+            alt="Log Out"
           />
         </Tooltip>
       </a>

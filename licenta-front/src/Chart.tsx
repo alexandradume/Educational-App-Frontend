@@ -42,6 +42,8 @@ export default function Chart() {
   const [score, setScore] = useState(0);
   const [scores, setScores] = useState([]);
   const magicImage = "./src/assets/magic-ball.png";
+  const sparckImage = "./src/assets/magic.png";
+  const risingImage = "./src/assets/rising.png";
   const [visible, setVisible] = useState<boolean>(false);
   const [prediction, setPrediction] = useState(0);
 
@@ -190,6 +192,7 @@ export default function Chart() {
           </div>
         )}
       </div>
+
       <img
         style={{
           position: "absolute",
@@ -202,18 +205,45 @@ export default function Chart() {
         src={magicImage}
         alt="Binary"
       />
+
       {visible ? (
         <div className="prediction-div">
           {" "}
           <b>
+            <img
+              src={sparckImage}
+              style={{
+                position: "absolute",
+                top: "2.5vh",
+                left: 0,
+                marginLeft: "1vw",
+                height: "7vh",
+              }}
+              alt="Binary"
+            />
             Prezicem că în curând poți ajunge la {prediction} dacă continui cu
             același spor.
           </b>
+          <img
+            style={{
+              position: "absolute",
+              bottom: "4vh",
+              right: 0,
+              marginRight: "2vw",
+              height: "13vh",
+            }}
+            src={risingImage}
+            alt="Binary"
+          />
           <br></br>
           <br></br>
-          <Button   variant="primary"
-          type="submit"
-          onClick={() => setVisible(false)}>Am înțeles</Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => setVisible(false)}
+          >
+            Super
+          </Button>
         </div>
       ) : null}
     </div>

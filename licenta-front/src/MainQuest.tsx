@@ -439,12 +439,6 @@ const MainQuest: React.FC = () => {
         src={treasureImage}
         alt="Binary"
       />
-      <img
-        className="img-toop-leftt"
-        style={{ height: "75px" }}
-        src={treasureMapImage}
-        alt="Binary"
-      />
 
       <img
         className="img-bottom-right"

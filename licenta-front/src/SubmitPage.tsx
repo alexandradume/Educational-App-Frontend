@@ -108,13 +108,15 @@ function SubmitPage() {
       }
 
       try {
+        var sc = score;
+        if (score == 0) sc = -5;
         const response = await axios.put(
           `http://localhost:8080/api/users/updateScore`,
           null,
           {
             params: {
               username: username,
-              newScore: score * 4,
+              newScore: sc * 4,
             },
           }
         );

@@ -33,6 +33,7 @@ import SubmitQuest from "./SubmitQuest";
 import Podium from "./Podium";
 import Chart from "./Chart";
 import Map from "./Map";
+import Arbori from "./Arbori";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path="/submit-quest" component={SubmitQuest} />
         <Route path="/podium" component={Podium} />
         <Route path="/map" component={Map} />
+        <Route path="/arbori" component={Arbori} />
 
         <Route path="/chart" component={Chart} />
         <Route

@@ -75,13 +75,13 @@ function Lessons() {
       <NavBar username={username}></NavBar>
       <img
         className="img-top-left"
-        style={{ height: "80px" }}
+        style={{ height: "12vh" }}
         src={neuralImage}
         alt="Algorithm"
       />
       <img
         className="img-top-rightt"
-        style={{ height: "80px" }}
+        style={{ height: "12vh" }}
         src={binaryImage}
         alt="Binary"
       />
@@ -179,25 +179,25 @@ function Lessons() {
         </div>
         <img
           className="img-top-right"
-          style={{ height: "80px" }}
+          style={{ height: "12vh" }}
           src={algorithmImage}
           alt="Binary"
         />
         <img
           className="img-bottom-right"
-          style={{ height: "80px" }}
+          style={{ height: "12vh" }}
           src={preferencesImage}
           alt="Binary"
         />
         <img
           className="img-bottom-left"
-          style={{ height: "80px" }}
+          style={{ height: "12vh" }}
           src={binaryCodeImage}
           alt="Binary"
         />
         <img
           className="img-bottom-left-left"
-          style={{ height: "80px" }}
+          style={{ height: "12vh" }}
           src={computerImage}
           alt="Binary"
         />

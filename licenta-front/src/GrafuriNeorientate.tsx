@@ -43,7 +43,7 @@ function TeoriaGrafurilor() {
     return (
       <Redirect
         to={{
-          pathname: `/grafuri-algoritmi`,
+          pathname: `/arbori`,
           state: { username: username },
         }}
       />

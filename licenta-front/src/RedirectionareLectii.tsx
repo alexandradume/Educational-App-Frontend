@@ -75,6 +75,9 @@ const RedirectionareLectii: React.FC<Props> = ({ username, clasa }) => {
     if (lectie == "Teoria grafurilor") {
       pathnamee = "/teoria-grafurilor";
     }
+    if (lectie == "Arbori binari") {
+      pathnamee = "/arbori";
+    }
     if (pathnamee) {
       history.push({
         pathname: pathnamee,
@@ -108,6 +111,7 @@ const RedirectionareLectii: React.FC<Props> = ({ username, clasa }) => {
     "Greedy",
     "Programare dinamică",
     "Teoria grafurilor",
+    "Arbori binari",
     "Lecții",
   ];
 

@@ -70,6 +70,7 @@ function Test() {
       if (questions[i].correctAnswer === selectedAnswers[i]) {
         newScore++;
       }
+     
     }
 
     const halfLength = questions.length / 2;
