@@ -87,6 +87,27 @@ function Test() {
     }
   }, [timeElapsed]);
 
+
+
+  const [windowFullyVisible, setWindowFullyVisible] = useState(true);
+
+  useEffect(() => {
+    // Funcție pentru verificarea dacă fereastra este afișată complet
+    const handleWindowResize = () => {
+      // Verifică dacă lățimea ferestrei este egală cu lățimea totală a documentului
+      const fullyVisible = window.innerWidth === document.body.clientWidth;
+      setWindowFullyVisible(fullyVisible);
+    };
+
+    // Adaugă un event listener pentru redimensionarea ferestrei
+    window.addEventListener("resize", handleWindowResize);
+
+    // Cleanup: elimină event listener-ul când componenta se demontează
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   if (redirect) {
     return (
       <Redirect

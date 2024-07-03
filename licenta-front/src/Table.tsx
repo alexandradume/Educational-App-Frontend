@@ -19,7 +19,7 @@ const Table: React.FC<Table> = ({ data }) => {
 
   return (
     <div>
-      <h3>Testele tale recente</h3>
+      <h3>Cele mai bune rezultate ale tale la teste</h3>
       <div className="table-container">
         <table className="custom-table">
           <thead>

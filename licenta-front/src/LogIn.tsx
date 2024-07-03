@@ -32,7 +32,7 @@ function LogIn() {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+      alert("Nu se poate face conexiunea cu serverul");
     }
   };
 
@@ -52,46 +52,60 @@ function LogIn() {
   if (redirect1) {
     return <Redirect to={{ pathname: `/signin` }} />;
   }
-
+  const gameImage = "./src/assets/game.png";
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-      className="myFormContainer"
-    >
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <FormControl
-            type="input"
-            placeholder="Username"
-            value={email}
-            style={{ height: "30px", width: "200px" }}
-            onChange={(e) => setEmail(e.target.value)}
+    <div>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+        className="myFormContainer"
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h3 style={{ marginRight: "10px" }}>Bine ai venit în TechTrove!</h3>
+          <img
+            className="img-top"
+            style={{ height: "50px" }}
+            src={gameImage}
+            alt="Binary"
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicPassword" style={{ marginTop: "20px" }}>
-          <FormControl
-            type="password"
-            placeholder="Parola"
-            value={password}
-            style={{ height: "30px", width: "200px" }}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <br />
-        <Button variant="primary" type="submit">
-          Log In
+        </div>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <FormControl
+              type="input"
+              placeholder="Username"
+              value={email}
+              style={{ height: "30px", width: "200px" }}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group
+            controlId="formBasicPassword"
+            style={{ marginTop: "20px" }}
+          >
+            <FormControl
+              type="password"
+              placeholder="Parola"
+              value={password}
+              style={{ height: "30px", width: "200px" }}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <br />
+          <Button variant="primary" type="submit">
+            Log In
+          </Button>
+        </Form>
+        <h4 style={{ marginTop: "20px", color: "black" }}>Nu ai cont?</h4>{" "}
+        {/* Moved outside the form */}
+        <Button variant="primary" onClick={handleSingIn}>
+          Sign In
         </Button>
-      </Form>
-      <h4 style={{ marginTop: "20px" }}>Nu ai cont?</h4>{" "}
-      {/* Moved outside the form */}
-      <Button variant="primary" onClick={handleSingIn}>
-        Sign In
-      </Button>
+      </div>
     </div>
   );
 }

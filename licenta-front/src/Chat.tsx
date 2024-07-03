@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProfilePicture from "./ProfilePicture";
-import Table from "./Table";
 import { Form, FormControl, Button } from "react-bootstrap";
-import { Redirect, useHistory } from "react-router-dom";
 import "./Chat.css";
-import "./ProfilePicture.css";
-import Tooltip from "./Tooltip";
 
 interface NavBarProps {
   username: string;
@@ -21,19 +16,31 @@ interface Message {
 const Chat: React.FC<NavBarProps> = ({ username }) => {
   const [mesaje, setMesaje] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
-  const [text, setText] = useState<string>("");
+
   const handleSendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputValue.trim() !== "") {
-      setText(inputValue.trim());
-      try {
-        const messageData = {
-          _id: "", // Generate a unique ID for each message
-          username: username,
-          text: inputValue.trim(),
-          date: new Date().toISOString(),
-        };
 
+    if (inputValue.trim() !== "") {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0"); // getMonth() returns month from 0 to 11
+      const day = String(now.getDate()).padStart(2, "0");
+      const formattedDate = `${year}-${month}-${day}`;
+
+      const formattedTime = now.toLocaleTimeString("ro-RO", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Europe/Bucharest",
+      });
+
+      const messageData = {
+        _id: "", // Generează un ID unic pentru fiecare mesaj
+        username: username,
+        text: inputValue.trim(),
+        date: `${formattedDate} ${formattedTime}`,
+      };
+
+      try {
         const response = await fetch(`http://localhost:8080/api/messages/add`, {
           method: "POST",
           headers: {
@@ -46,14 +53,9 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
           throw new Error("Network response was not ok");
         }
 
-        // Update messages state
         setMesaje((prevMesaje) => [...prevMesaje, messageData]);
-      } catch (error) {
-        console.error("Error sending message:", error);
-      }
 
-      try {
-        const response = await fetch(
+        const aiResponse = await fetch(
           `http://localhost:8080/api/messages/ai?username=${username}&text=${inputValue.trim()}`,
           {
             method: "GET",
@@ -62,23 +64,19 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
             },
           }
         );
-        console.log("aaaaaaaaaaa" + inputValue.trim());
 
-        if (!response.ok) {
+        if (!aiResponse.ok) {
           throw new Error("Network response was not ok");
         }
 
-        const data = await response.json();
-        console.log("Message from AI:", data);
-        setMesaje((prevMesaje) => [...prevMesaje, data]);
-        return data;
+        const aiData = await aiResponse.json();
+        setMesaje((prevMesaje) => [...prevMesaje, aiData]);
       } catch (error) {
-        console.error("Error fetching message from AI:", error);
-        throw error;
+        console.error("Error sending message:", error);
       }
-    }
 
-    setInputValue(""); // Reset input after sending
+      setInputValue(""); // Resetează inputul după trimitere
+    }
   };
 
   useEffect(() => {
@@ -91,7 +89,7 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setMesaje(data); // Update mesaje state with data from the server
+        setMesaje(data);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -105,32 +103,15 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
       <h4 style={{ paddingLeft: "10px", fontSize: "15px" }}>ChatBot</h4>
       <div className="chat-messages">
         {mesaje.map((mesaj, index) => (
-          <div>
+          <div key={index}>
             <div
-              key={index}
               className={index % 2 === 0 ? "messageDivEven" : "messageDivOdd"}
             >
               {mesaj.text}
-              <br></br>
+              <br />
               <span style={{ color: "black", fontSize: "12px" }}>
-                <b>
-                  {mesaj.date[11] +
-                    mesaj.date[12] +
-                    mesaj.date[13] +
-                    mesaj.date[14] +
-                    mesaj.date[15] +
-                    " "}
-                </b>
-                {mesaj.date[0] +
-                  mesaj.date[1] +
-                  mesaj.date[2] +
-                  mesaj.date[3] +
-                  mesaj.date[4] +
-                  mesaj.date[5] +
-                  mesaj.date[6] +
-                  mesaj.date[7] +
-                  mesaj.date[8] +
-                  mesaj.date[9]}
+                <b>{mesaj.date.slice(11, 16) + " "}</b>
+                {mesaj.date.slice(0, 10)}
               </span>
             </div>
           </div>
@@ -141,6 +122,10 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
           type="text"
           placeholder="Scrie un mesaj"
           value={inputValue}
+          style={{
+            backgroundColor: "#333ed744",
+            color: "black",
+          }}
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button type="submit">
@@ -154,4 +139,5 @@ const Chat: React.FC<NavBarProps> = ({ username }) => {
     </div>
   );
 };
+
 export default Chat;

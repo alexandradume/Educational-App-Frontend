@@ -57,6 +57,10 @@ const Profile: React.FC = () => {
   const risingImage = "./src/assets/happy-birthday.png";
   const sparckImage = "./src/assets/confetti.png";
 
+  const [yearOfLastGift, setYearOfLastGift] = useState(0);
+
+  const [refreshKey, setRefreshKey] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,6 +75,7 @@ const Profile: React.FC = () => {
         setNastere(data.birthdate);
         setQuest(data.numberOfDoneQuest);
         setUserData(data);
+        setYearOfLastGift(data.yearOfLastGift);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -113,23 +118,51 @@ const Profile: React.FC = () => {
         const birthDay = nastere[0] + nastere[1];
         const birthMonth = nastere[3] + nastere[4];
 
-        if (dayFormatted === birthDay && monthFormatted === birthMonth) {
+        if (
+          dayFormatted === birthDay &&
+          monthFormatted === birthMonth &&
+          yearOfLastGift != 2024
+        ) {
           setVisible(true);
-          const response = await axios.put(
-            `http://localhost:8080/api/users/updateNumberOfDoneQuest`,
-            null,
-            {
-              params: {
-                username: username,
-                newNumberOfDoneQuest: quest + 1,
-              },
-            }
-          );
+          try {
+            const response = await axios.put(
+              `http://localhost:8080/api/users/updateMoney`,
+              null,
+              {
+                params: {
+                  username: username,
+                  newMoney: 50,
+                },
+              }
+            );
+            console.log("Response:", response.data);
+          } catch (error) {
+            console.error("Error updating money:", error);
+          }
         }
       }
     };
     checkBirthdayAndUpdateQuest();
   }, [nastere]);
+
+  const changeYearOfLastGift = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/users/updateYearOfLastGift`,
+        null,
+        {
+          params: {
+            username: username,
+            yearOfLastGift: 2024,
+          },
+        }
+      );
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error updating money:", error);
+    }
+    setRefreshKey((oldKey) => oldKey + 1);
+  };
 
   useEffect(() => {
     switch (true) {
@@ -189,7 +222,7 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div key={refreshKey}>
       <NavBar username={username} />
       <div className="profile-container">
         <div className="profile-content">
@@ -237,7 +270,7 @@ const Profile: React.FC = () => {
               alt="Binary"
             />
             La mulți ani, {username}! Ne bucurăm că sărbătorești ziua ta lucrând
-            la educația ta. Pentru a te sărbători îți deschidem următorul quest.
+            la educația ta. Pentru a te sărbători îți oferim 50px.
           </b>
           <img
             style={{
@@ -255,7 +288,10 @@ const Profile: React.FC = () => {
           <Button
             variant="primary"
             type="submit"
-            onClick={() => setVisible(false)}
+            onClick={() => {
+              setVisible(false);
+              changeYearOfLastGift();
+            }}
           >
             Mulțumesc
           </Button>

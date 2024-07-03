@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Test.css"; // Import your custom CSS file
-import { Button } from "react-bootstrap";
-import { useLocation, useParams } from "react-router-dom";
+import { Redirect, useLocation, useHistory } from "react-router-dom";
 import "./SubmitPage.css";
-import { Redirect, useHistory } from "react-router-dom";
 import "./Lessons.css";
 import NavBar from "./NavBar";
+
 interface LocationState {
   username: string;
 }
@@ -15,6 +14,9 @@ function Lessons() {
   const { username } = location.state;
   const [redirect9, setRedirect9] = useState<boolean>(false);
   const [redirect10, setRedirect10] = useState<boolean>(false);
+  const [redirect11, setRedirect11] = useState<boolean>(false);
+  const [windowFullyVisible, setWindowFullyVisible] = useState(true);
+
   const testImage = "./src/assets/test.png";
   const medalImage = "./src/assets/medal.png";
   const algorithmImage = "./src/assets/algorithm.png";
@@ -23,7 +25,19 @@ function Lessons() {
   const binaryCodeImage = "./src/assets/binary-code.png";
   const preferencesImage = "./src/assets/preferences.png";
   const computerImage = "./src/assets/computer-science.png";
-  const [redirect11, setRedirect11] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowFullyVisible(window.innerWidth >= 1200); // Adjust this value as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleButton9 = () => {
     setRedirect9(true);
@@ -73,18 +87,22 @@ function Lessons() {
   return (
     <div>
       <NavBar username={username}></NavBar>
-      <img
-        className="img-top-left"
-        style={{ height: "12vh" }}
-        src={neuralImage}
-        alt="Algorithm"
-      />
-      <img
-        className="img-top-rightt"
-        style={{ height: "12vh" }}
-        src={binaryImage}
-        alt="Binary"
-      />
+      {windowFullyVisible && (
+        <img
+          className="img-top-left"
+          style={{ height: "12vh" }}
+          src={neuralImage}
+          alt="Algorithm"
+        />
+      )}
+      {windowFullyVisible && (
+        <img
+          className="img-top-rightt"
+          style={{ height: "12vh" }}
+          src={binaryImage}
+          alt="Binary"
+        />
+      )}
       <h1
         style={{
           display: "flex",
@@ -177,30 +195,34 @@ function Lessons() {
             </b>
           </span>
         </div>
-        <img
-          className="img-top-right"
-          style={{ height: "12vh" }}
-          src={algorithmImage}
-          alt="Binary"
-        />
-        <img
-          className="img-bottom-right"
-          style={{ height: "12vh" }}
-          src={preferencesImage}
-          alt="Binary"
-        />
-        <img
-          className="img-bottom-left"
-          style={{ height: "12vh" }}
-          src={binaryCodeImage}
-          alt="Binary"
-        />
-        <img
-          className="img-bottom-left-left"
-          style={{ height: "12vh" }}
-          src={computerImage}
-          alt="Binary"
-        />
+        {windowFullyVisible && (
+          <>
+            <img
+              className="img-top-right"
+              style={{ height: "12vh" }}
+              src={algorithmImage}
+              alt="Binary"
+            />
+            <img
+              className="img-bottom-right"
+              style={{ height: "12vh" }}
+              src={preferencesImage}
+              alt="Binary"
+            />
+            <img
+              className="img-bottom-left"
+              style={{ height: "12vh" }}
+              src={binaryCodeImage}
+              alt="Binary"
+            />
+            <img
+              className="img-bottom-left-left"
+              style={{ height: "12vh" }}
+              src={computerImage}
+              alt="Binary"
+            />
+          </>
+        )}
       </div>
       <div></div>
     </div>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-// Import your custom CSS file
 import { Button } from "react-bootstrap";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import "./Profile.css";
-import { useLocation, useParams } from "react-router-dom";
 
 interface Question {
   _id: string;
@@ -23,26 +21,35 @@ interface LocationState {
 function Raspunsuri() {
   const location = useLocation<LocationState>();
   const { username, category, questions } = location.state;
-  console.log(category);
-
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [redirect, setRedirect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
-  const [calificativ, setCalificativ] = useState<String>("");
-  var url = "http://localhost:8080/api/questions?category=" + category;
+  const [calificativ, setCalificativ] = useState<string>("");
+  const [windowFullyVisible, setWindowFullyVisible] = useState(true);
 
   const testImage = "./src/assets/test.png";
   const medalImage = "./src/assets/medal.png";
 
   const categoryUppercase = category.toUpperCase();
 
-  var i;
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowFullyVisible(window.innerWidth >= 1200); // Adjust this value as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleButtonClick = () => {
-    var newScore = 0;
+    let newScore = 0;
 
-    for (i = 0; i < questions.length; i++) {
-      if (questions[i].correctAnswer == selectedAnswers[i]) {
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].correctAnswer === selectedAnswers[i]) {
         newScore++;
       }
     }
@@ -103,7 +110,12 @@ function Raspunsuri() {
                     style={{
                       listStyleType: "none",
                       paddingLeft: "20px",
-                      backgroundColor: isCorrectAnswer ? "#d3c5ff9" : "inherit", // Setăm culoarea textului în roșu pentru răspunsul corect
+                      backgroundColor: isCorrectAnswer ? "#d3c5ff9" : "inherit",
+                    }}
+                    onClick={() => {
+                      const newSelectedAnswers = [...selectedAnswers];
+                      newSelectedAnswers[index] = answer;
+                      setSelectedAnswers(newSelectedAnswers);
                     }}
                   >
                     <span
@@ -128,18 +140,22 @@ function Raspunsuri() {
         ))}
       </div>
 
-      <img
-        className="img-top-right"
-        style={{ height: "80px" }}
-        src={testImage}
-        alt="Binary"
-      />
-      <img
-        className="img-top-right-right"
-        style={{ height: "80px" }}
-        src={medalImage}
-        alt="Binary"
-      />
+      {windowFullyVisible && (
+        <>
+          <img
+            className="img-top-right"
+            style={{ height: "80px" }}
+            src={testImage}
+            alt="Test"
+          />
+          <img
+            className="img-top-right-right"
+            style={{ height: "80px" }}
+            src={medalImage}
+            alt="Medal"
+          />
+        </>
+      )}
       <Button
         variant="primary"
         type="submit"

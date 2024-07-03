@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Tab.css";
 import axios from "axios";
 import "./Podium.css";
-import { Redirect, useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NavBar from "./NavBar";
 
 interface LocationState {
@@ -35,9 +35,24 @@ const Podium: React.FC = () => {
   const [activeTab, setActiveTab] = useState("scor");
   const [users, setUsers] = useState<UserData[]>([]);
   const [users1, setUsers1] = useState<UserData[]>([]);
+  const [windowFullyVisible, setWindowFullyVisible] = useState(true);
+
   const podiumImage = "./src/assets/rating.png";
   const location = useLocation<LocationState>();
   const { username } = location.state;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowFullyVisible(window.innerWidth >= 1200); // Adjust this value as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchUsersByScore = async () => {
@@ -63,11 +78,9 @@ const Podium: React.FC = () => {
     };
 
     fetchUsersByScore();
-
     fetchUsersByMoney();
   }, []);
 
-  console.log(users);
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
   };
@@ -80,15 +93,14 @@ const Podium: React.FC = () => {
         backgroundRepeat: "no-repeat",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column", // Afișează elementele într-o singură coloană
-
+        flexDirection: "column",
         fontSize: "20px",
       }}
     >
       <NavBar username={username}></NavBar>
 
       <h1 style={{ paddingLeft: "25px" }}>Podium</h1>
-      <br></br>
+      <br />
       <div className="tab-container">
         <div
           className={`tab ${activeTab === "scor" && "active"}`}
@@ -105,7 +117,7 @@ const Podium: React.FC = () => {
       </div>
 
       <div className="table-containeer">
-        <br></br>
+        <br />
         {activeTab === "scor" ? (
           <table className="custom-tablee">
             <thead>
@@ -142,12 +154,14 @@ const Podium: React.FC = () => {
           </table>
         )}
       </div>
-      <img
-        className="img-top-right"
-        style={{ height: "90px", padding: "20px" }}
-        src={podiumImage}
-        alt="Binary"
-      />
+      {windowFullyVisible && (
+        <img
+          className="img-top-right"
+          style={{ height: "15vh", padding: "20px" }}
+          src={podiumImage}
+          alt="Binary"
+        />
+      )}
     </div>
   );
 };

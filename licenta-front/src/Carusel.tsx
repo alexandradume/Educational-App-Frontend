@@ -23,6 +23,7 @@ const Carusel: React.FC<Props> = ({ username, category }) => {
   const [score, setScore] = useState(0);
   const [vizibile, setVizibile] = useState(false);
   const [money, setMoney] = useState(0);
+  const [vizibileArrows, setVizibileArrows] = useState(true);
 
   useEffect(() => {
     fetchQuestions();
@@ -82,6 +83,7 @@ const Carusel: React.FC<Props> = ({ username, category }) => {
 
     setMoney(newScore * 10);
     setVizibile(true);
+    setVizibileArrows(false);
     fetchQuestions();
   };
 
@@ -155,8 +157,12 @@ const Carusel: React.FC<Props> = ({ username, category }) => {
         )}
       </div>
       <div className="arrow-container">
-        <span className="arrow left" onClick={goToPrevious}></span>
-        <span className="arrow right" onClick={goToNext}></span>
+        {vizibileArrows ? (
+          <>
+            <span className="arrow left" onClick={goToPrevious}></span>
+            <span className="arrow right" onClick={goToNext}></span>
+          </>
+        ) : null}
       </div>
     </div>
   );

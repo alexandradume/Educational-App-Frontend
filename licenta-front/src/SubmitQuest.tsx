@@ -170,13 +170,13 @@ const SubmitQuest: React.FC = () => {
 
           <img
             className="img-top-right"
-            style={{ height: "70px", marginTop: "65px" }}
+            style={{ height: "70px", marginTop: "40px" }}
             src={knightmage}
             alt="Binary"
           />
           <img
             className="img-top-rightt"
-            style={{ height: "70px", marginTop: "70px" }}
+            style={{ height: "70px", marginTop: "50px" }}
             src={questImage}
             alt="Binary"
           />
